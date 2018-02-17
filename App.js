@@ -4,6 +4,7 @@ import {
   Text,
   View,
   Button,
+  TouchableOpacity,
 } from 'react-native';
 
 export default class App extends React.Component {
@@ -49,23 +50,33 @@ export default class App extends React.Component {
         <Text style={[styles.counter, {color: this.state.textColor}]}>{this.state.number}</Text>
 
         <View style={styles.footer}>
-          <Button
-            onPress= {this.increment}
-            title = "Increment"
-            color = "#006920"
-          />
-          <Button
-            onPress= {this.decrement}
-            title = "Decrement"
-            color = "#690100"
-          />
+
+
+        <TouchableOpacity
+         style={[styles.button, {backgroundColor: "#006920"}]}
+         onPress={this.increment}
+         activeOpacity = { .5 }
+         >
+         <Text style={styles.buttonText}>Increment</Text>
+       </TouchableOpacity>
+
+       <TouchableOpacity
+        style={[styles.button, {backgroundColor: "#690100"}]}
+        onPress={this.decrement}
+        activeOpacity = { .5 }
+        >
+        <Text style={styles.buttonText}>Decrement</Text>
+       </TouchableOpacity>
         </View>
-        <View style={[styles.footer, {bottom: -30}]}>
-          <Button
-            onPress= {this.reset}
-            title = "Reset"
-            color = "#000"
-          />
+
+        <View style={[styles.footer, {bottom: -22}]}>
+        <TouchableOpacity
+         style={[styles.button, {backgroundColor: "#333333"}]}
+         onPress={this.reset}
+         activeOpacity = { .5 }
+         >
+         <Text style={styles.buttonText}>Reset</Text>
+        </TouchableOpacity>
         </View>
       </View>
     );
@@ -85,14 +96,28 @@ const styles = StyleSheet.create({
     color: "#000"
   },
 
+  button: {
+    alignItems: 'center',
+    backgroundColor: '#DDDDDD',
+    padding: 10,
+    borderRadius: 5,
+    margin: 5,
+    paddingLeft: 20,
+    paddingRight: 20
+  },
+
+  buttonText: {
+    color: "#fff",
+    fontSize: 20
+  },
+
   footer: {
     position: 'absolute',
-    bottom: 10,
+    bottom: 30,
     height: 150,
     alignItems:'center',
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-between'
   },
 
 });
